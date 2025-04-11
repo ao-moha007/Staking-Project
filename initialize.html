@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+initial-scale=1.0"
+    />
+    <title>@aouichmed - ERC20 Token Stacking Dapp</title>
+    <link rel="icon" href="assets/img/logo.png" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/vendor/notyf/notyf.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .initializer {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 40px auto;
+      }
+      label {
+        display: block;
+        margin-top: 15px;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+      }
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #status {
+        margin-top: 20px;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- PRELOADER-->
+    <div id="gameon-preloader" class="gameon-preloader">
+      <div class="preloader-animation">
+        <div class="spinner"></div>
+        <p class="fw-5 text-center text-uppercase">Loading</p>
+      </div>
+      <div class="loader-animation">
+        <div class="row h-100">
+          <!--SINGLE-LOADER-->
+          <div class="col-3 single-loader p-0">
+            <div class="loader-bg"></div>
+          </div>
+          <!--SINGLE-LOADER-->
+          <div class="col-3 single-loader p-0">
+            <div class="loader-bg"></div>
+          </div>
+          <!--SINGLE-LOADER-->
+          <div class="col-3 single-loader p-0">
+            <div class="loader-bg"></div>
+          </div>
+          <!--SINGLE-LOADER-->
+          <div class="col-3 single-loader p-0">
+            <div class="loader-bg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- PRELOADER END -->
+
+    <!-- MAIN START -->
+    <div class="main">
+      <!-- //HEADER SECTION -->
+      <header id="header">
+        <nav
+          data-aos="zoom-out"
+          data-aos-delay="800"
+          class="navbar gameon-navbar navbar-expand"
+        >
+          <div class="container header">
+            <a href="index.html" class="navbat-brand">
+              <img src="assets/img/logo/logo.png" alt="Brand Logo" />
+            </a>
+            <div class="ml-auto"></div>
+
+            <ul class="navbar-nav items mx-auto">
+              <li class="nav-item active">
+                <a href="index.html" class="nav-link active"> Home </a>
+              </li>
+              <li class="nav-item active">
+                <a href="project-2.html" class="nav-link active"> Project </a>
+              </li>
+              <li class="nav-item active">
+                <a href="staking-1.html" class="nav-link active"> Staking </a>
+              </li>
+              <li class="nav-item active">
+                <a href="contact.html" class="nav-link active"> Contact </a>
+              </li>
+              <li class="nav-item active">
+                <a href="initialize.html" class="nav-link active"> Initialize </a>
+              </li>
+              <li class="nav-item active">
+                <a href="analytic.html" class="nav-link active"> Profile </a>
+              </li>
+            </ul>
+
+            <!-- NAVBAR TOGGLE -->
+            <ul class="navbar-nav icons">
+              <li class="nav-item">
+                <a
+                  href="#"
+                  class="nav-link"
+                  data-toggle="modal"
+                  data-target="#search"
+                >
+                  <i class="icon-magnifier"></i>
+                </a>
+              </li>
+            </ul>
+
+            <!-- NAVBAR TOGGLE -->
+            <ul class="navbar-nav icons">
+              <li class="nav-item">
+                <a
+                  href="#"
+                  class="nav-link"
+                  data-toggle="modal"
+                  data-target="#menu"
+                >
+                  <i class="icon-menu m-0"></i>
+                </a>
+              </li>
+            </ul>
+
+            <!-- NAVBAR ACTION BUTTON -->
+            <ul class="navbar-nav action">
+              <li class="nav-itemml-2">
+                <a class="btn ml-lg-auto btn-border-white">
+                  <i class="icon-wallet mr-md-2"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- //END HEADER SECTION -->
+
+      <!-- BREADCROMB SECTION START -->
+
+      <section class="breadcrumb-area overly-dark d-flex align-items-center ">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="breadcrumb-content text-center">
+                <h2 class="m-0">Initialize</h2>
+                <ol class="breadcrumb d-flex justify-content-center">
+                  <li class="breadcrumb-item">
+                    <a href="index.html">Home</a>
+                  </li>
+                  <li class="breadcrumb-item">
+                    <a href="#">Initialize</a>
+                  </li>
+                  <li class="breadcrumb-item active">
+                    <a href="index.html">Initialize</a>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BREADCROMB SECTION END -->
+     
+
+      <!-- INITTIALIZER START -->
+     
+       <div class="initializer">
+        <form id="initForm">
+          <div>
+            <label class="block font-semibold">Owner Address</label>
+            <input type="text" id="owner" class="w-full border p-2 rounded" required>
+          </div>
+          <div>
+            <label class="block font-semibold">Token Address</label>
+            <input type="text" id="token" class="w-full border p-2 rounded" required>
+          </div>
+    
+          <div>
+            <label class="block font-semibold">APY (%)</label>
+            <input type="number" id="apy" class="w-full border p-2 rounded" value="15" required>
+          </div>
+    
+         
+    
+          <div>
+            <label class="block font-semibold">Minimum Staking Amount (ETH)</label>
+            <input type="number" step="0.01" id="minStake" class="w-full border p-2 rounded" value="1" required>
+          </div>
+    
+          <div>
+            <label class="block font-semibold">Maximum Stake Limit (ETH)</label>
+            <input type="number" step="0.01" id="maxStake" class="w-full border p-2 rounded" value="5" required>
+          </div>
+    
+          <div>
+            <label class="block font-semibold">Stake Start Date (Unix Timestamp)</label>
+            <input type="number" id="startDate" class="w-full border p-2 rounded" required>
+            <br/>
+            <br/>
+            <a href="#" class="btn btn-bordered active d-inline-block" onclick="setNow()">
+              <i class=" mr-2"></i>Set to Now
+            </a>
+            
+          </div>
+    
+          <div>
+            <label class="block font-semibold">Stake End Date (Unix Timestamp)</label>
+            <input type="number" id="endDate" class="w-full border p-2 rounded" required>
+            <br/>
+          <br/>
+          <a href="#" class="btn btn-bordered active d-inline-block" onclick="setThirtyDaysLater()">
+            <i class=" mr-2"></i>+30 Days
+          </a>
+            
+          </div>
+    
+          <div>
+            <label class="block font-semibold">Stake Lock Period (days)</label>
+            <input type="number" id="stakeDays" class="w-full border p-2 rounded" value="2" required>
+          </div>
+    
+          <div>
+            <label class="block font-semibold">Early Unstake Fee (%)</label>
+            <input type="number" id="earlyFee" class="w-full border p-2 rounded" value="20" required>
+          </div>
+          
+      
+          <br/>
+          <br/>
+          <a href="#" id="initBtn" class="btn btn-bordered active d-inline-block">
+            <i class=" mr-2"></i>Initialize
+          </a>
+        </form>
+      
+        <p id="status"></p>
+       </div>
+      <!-- INITIALIZER END  -->
+
+
+
+      <!-- CTA ARE OR START -->
+
+      <section class="cta-area p-0">
+        <div class="container">
+          <div class="row">
+            <div class="row align-items-center justify-content-center">
+              <div class="col-12 col-md-5 text-center">
+                <img src="assets/img/content/cta_thumb.png" alt="" />
+              </div>
+              <div class="col-12 col-md-6 mt-4 mt-md-0">
+                <h2 class="m-0">Apply for IGO</h2>
+                <p>
+                  Get access to a huge set of tools to stake your ERC20 tokens
+                  and earn rewards
+                </p>
+                <a href="#" class="btn btn-bordered active d-inline-block">
+                  <i class="icon-rocket mr-2"></i>Apply Now
+                </a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA ARE OR END -->
+
+      <!-- FOOTER SECTION START -->
+      <footer class="footer-area">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-8 text-center">
+              <!-- FOTER ITEMS -->
+              <div class="footer-items">
+                <!-- LOGO -->
+                <a href="index.html" class="navbar-brand">
+                  <img src="asstes/img/logo.png" alt="" />
+                </a>
+                <!-- SOCIAL ITEMS -->
+                <div class="social-icons d-flex justify-content-center my-4">
+                  <a href="#" class="facebook" target="_blank">
+                    <i class="icon-social-facebook"></i>
+                    <i class="icon-social-facebook"></i>
+                  </a>
+                  <a href="#" class="twitter" target="_blank">
+                    <i class="icon-social-twitter"></i>
+                    <i class="icon-social-twitter"></i>
+                  </a>
+                  <a href="#" class="linkedin" target="_blank">
+                    <i class="icon-social-linkedin"></i>
+                    <i class="icon-social-linkedin"></i>
+                  </a>
+                  <a href="#" class="reddit" target="_blank">
+                    <i class="icon-social-reddit"></i>
+                    <i class="icon-social-reddit"></i>
+                  </a>
+                  <a href="#" class="vkontakte" target="_blank">
+                    <i class="icon-social-vkontakte"></i>
+                    <i class="icon-social-vkontakte"></i>
+                  </a>
+                  <a href="#" class="youtube" target="_blank">
+                    <i class="icon-social-youtube"></i>
+                    <i class="icon-social-youtube"></i>
+                  </a>
+                </div>
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <a href="#">Features</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">Roadmap</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">How it works</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">Blog</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">Privacy Policy</a>
+                  </li>
+                </ul>
+                <!-- COPYRIGHT SECTION -->
+
+                <div class="copyright-area py-4">
+                  &copy;2025 @aouichmed, All Rights Reserved By
+                  <a
+                    href="hhtps;//www.beechain.com/sourceCode"
+                    target="_blank"
+                    >@aouichmed</a
+                  >
+                </div>
+              </div>
+
+              <!-- SCROLL TO TOP -->
+              <div class="scroll-to-top" id="scroll-to-top">
+                <a href="#header" class="smoooth-anchor">
+                  <i class="fa-solid fa-arrow-up"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- FOOTER SECTION END -->
+
+      <!-- MODAL SEARCH AREA START -->
+      <div id="search" class="modal p-0">
+        <div class="modal-dialog modal-animated">
+          <div class="modal-content h-100">
+            <div class="modal-header" data-dismiss="modal">
+              Search <i class="far fa-times-circle"></i>
+            </div>
+            <div class="modal-body">
+              <form class="row">
+                <div class="col-12 align-self-center">
+                  <div class="row">
+                    <div class="col-12 pb-3">
+                      <h3 class="search-title mt-0 mb-3">
+                        what are you lokking for?
+                      </h3>
+                      <p>coming to you</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 input-group mt-md-4">
+                      <input type="text" placeholder="Enter you keywords" />
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 input-group align-self-center">
+                      <button class="btn btn-bordered-white mt-3">
+                        Search
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- NODAL SEARCH AREA START -->
+
+      <!-- MODAL RESPONSIVE MENU START -->
+      <div id="menu" class="modal fade p-0">
+        <div class="modal-dialog dialog-animated">
+          <div class="modal-content h-100">
+            <div class="modal-header" data-dismiss="modal">
+              Menu <i class="far fa-times-circle icon-center"></i>
+            </div>
+            <div class="menu modal-body">
+              <div class="row w-100">
+                <div class="items p-0 col-12 text-center"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL RESPONSIVE MENU END -->
+    </div>
+
+    <!-- MAIN END -->
+
+    <!-- SCRIPTS -->
+    <script src="assets/js/vendor/jquery.min.js"></script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/all.min.js"></script>
+    <script src="assets/js/vendor/gallery.min.js"></script>
+    <script src="assets/js/vendor/slider.min.js"></script>
+    <script src="assets/js/vendor/countdown.min.js"></script>
+    <script src="assets/js/vendor/shuffle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/vendor/notyf/notyf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.umd.min.js"></script>
+    <script type="module" src="../js/initializerScript.js"></script>
+    <script>
+      function setNow() {
+        document.getElementById("startDate").value = Math.floor(Date.now() / 1000);
+      }
+      function setThirtyDaysLater() {
+        const thirtyDays = 60 * 60 * 24 * 30;
+        document.getElementById("endDate").value = Math.floor(Date.now() / 1000) + thirtyDays;
+      }
+    </script>
+
+    <!-- //WEB3 FUNCTION SCRIPTS -->
+  </body>
+</html>
