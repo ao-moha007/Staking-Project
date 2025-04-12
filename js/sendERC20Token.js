@@ -9,7 +9,7 @@ async function main() {
   const receiverWallet = "0x78A82c351b5CaAfc47b36f1c38FC837262A7f677"; // Replace with your wallet address
   const receiverContract = "0x20B90382d7436bbdaB924A63B6F91638E1cF5De4"; // Replace with your wallet address
   const contractAddress = "0x0f5475BC1B2E48d4d5330f937A4219b8d061bA10"; // Replace with deployed contract address
-  const Contract = await ethers.getContractAt("Theblockchaincoders", contractAddress,deployer);
+  const Contract = await ethers.getContractAt("ERC20Token", contractAddress,deployer);
   
   const amount = ethers.parseUnits("1000", 18); // 100 tokens with 18 decimals
   const treasuryAmount = ethers.parseUnits("1000", 18);

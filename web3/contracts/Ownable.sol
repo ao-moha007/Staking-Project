@@ -1,49 +1,63 @@
-//SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.9;
 
-//IMPORTING CONTRACT
+// IMPORTING CONTEXT
 import "./Context.sol";
 
-abstract contract Ownable is Context{
-       address private _owner;
+/// @title Ownable Access Control Contract
+/// @notice Provides basic access control where an account (the owner) can be granted exclusive access to specific functions.
+/// @dev This is a simplified version of OpenZeppelin's Ownable. The owner is initially set to the deployer.
+abstract contract Ownable is Context {
+    /// @dev Stores the address of the current owner.
+    address private _owner;
 
-       event OwnershipTransferred(address indexed previousOwner,address indexed newOwner);
+    /// @notice Emitted when ownership is transferred from one address to another.
+    /// @param previousOwner The address of the previous owner.
+    /// @param newOwner The address of the new owner.
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
-       constructor(){
+    /// @dev Sets the deployer as the initial owner.
+    constructor() {
         _transferOwnership(_msgSender());
-     
-       }
+    }
 
-       modifier onlyOwner(){
+    /// @notice Restricts function execution to the current owner.
+    modifier onlyOwner() {
         _checkOwner();
         _;
-       }
+    }
 
-       function owner() public view virtual returns (address){
+    /// @notice Returns the address of the current owner.
+    /// @return The address of the owner.
+    function owner() public view virtual returns (address) {
         return _owner;
-       }
+    }
 
-       function _checkOwner() internal view virtual {
-        require(owner() == _msgSender(),"Ownable: caller is not the owner");
+    /// @dev Internal function to check whether the caller is the owner.
+    /// Reverts if the caller is not the owner.
+    function _checkOwner() internal view virtual {
+        require(owner() == _msgSender(), "Ownable: caller is not the owner");
+    }
 
-
-       }
-
-       function renounceOwnership() public virtual onlyOwner{
+    /// @notice Renounces ownership of the contract. This leaves the contract without an owner.
+    /// @dev This action is irreversible and disables `onlyOwner` functions permanently.
+    function renounceOwnership() public virtual onlyOwner {
         _transferOwnership(address(0));
-       }
+    }
 
-       function transferOwnership(address newOwner) public virtual onlyOwner {
-        require(newOwner != address(0),"Ownable: new is the zero address");
+    /// @notice Transfers ownership of the contract to a new address.
+    /// @param newOwner The address to transfer ownership to. Cannot be the zero address.
+    function transferOwnership(address newOwner) public virtual onlyOwner {
+        require(newOwner != address(0), "Ownable: new owner is the zero address");
         _transferOwnership(newOwner);
-       }
+    }
 
-       function _transferOwnership(address newOwner) internal virtual {
+    /// @dev Internal function to transfer ownership of the contract.
+    /// Emits an {OwnershipTransferred} event.
+    /// @param newOwner The address of the new owner.
+    function _transferOwnership(address newOwner) internal virtual {
         address oldOwner = _owner;
         _owner = newOwner;
         emit OwnershipTransferred(oldOwner, newOwner);
-       }
-
-
-
+    }
 }

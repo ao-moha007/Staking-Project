@@ -1,0 +1,307 @@
+Solidity API
+Address
+Contract
+Address : 
+
+Functions:
+isContract
+function isContract(address account) internal view returns (bool)
+sendValue
+function sendValue(address payable recipient, uint256 amount) internal
+functionCall
+function functionCall(address target, bytes data) internal returns (bytes)
+functionCall
+function functionCall(address target, bytes data, string errorMessage) internal returns (bytes)
+functionCallWithValue
+function functionCallWithValue(address target, bytes data, uint256 value) internal returns (bytes)
+functionCallWithValue
+function functionCallWithValue(address target, bytes data, uint256 value, string errorMessage) internal returns (bytes)
+functionStaticCall
+function functionStaticCall(address target, bytes data) internal view returns (bytes)
+functionStaticCall
+function functionStaticCall(address target, bytes data, string errorMessage) internal view returns (bytes)
+functionDelegateCall
+function functionDelegateCall(address target, bytes data) internal returns (bytes)
+functionDelegateCall
+function functionDelegateCall(address target, bytes data, string errorMessage) internal returns (bytes)
+verifyCallResult
+function verifyCallResult(bool success, bytes returndata, string errorMessage) internal pure returns (bytes)
+Context
+Contract
+Context : 
+
+Functions:
+_msgSender
+function _msgSender() internal view virtual returns (address)
+_msgData
+function _msgData() internal view virtual returns (bytes)
+IERC20
+Contract
+IERC20 : 
+
+Functions:
+balanceOf
+function balanceOf(address account) external view returns (uint256)
+transfer
+function transfer(address to, uint256 amount) external returns (bool)
+allowance
+function allowance(address owner, address spender) external view returns (uint256)
+approve
+function approve(address spender, uint256 amount) external returns (bool)
+transferFrom
+function transferFrom(address from, address to, uint256 amount) external returns (bool)
+Events:
+Transfer
+event Transfer(address from, address to, uint256 value)
+Approval
+event Approval(address owner, address spender, uint256 value)
+Initializable
+Contract
+Initializable : 
+
+Modifiers:
+initializer
+modifier initializer()
+reintializer
+modifier reintializer(uint8 version)
+onlyInitializing
+modifier onlyInitializing()
+Functions:
+_disableInitializers
+function _disableInitializers() internal virtual
+Events:
+Initialized
+event Initialized(uint8 version)
+Ownable
+Contract
+Ownable : 
+
+Modifiers:
+onlyOwner
+modifier onlyOwner()
+Functions:
+constructor
+constructor() internal
+owner
+function owner() public view virtual returns (address)
+_checkOwner
+function _checkOwner() internal view virtual
+renounceOwnership
+function renounceOwnership() public virtual
+transferOwnership
+function transferOwnership(address newOwner) public virtual
+_transferOwnership
+function _transferOwnership(address newOwner) internal virtual
+Events:
+OwnershipTransferred
+event OwnershipTransferred(address previousOwner, address newOwner)
+ReentrancyGuard
+Contract
+ReentrancyGuard : 
+
+Modifiers:
+nonReentrant
+modifier nonReentrant()
+Functions:
+constructor
+constructor() internal
+ERC20Token
+Contract
+ERC20Token : 
+
+Functions:
+constructor
+constructor() public
+inc
+function inc() internal
+transfer
+function transfer(address _to, uint256 _value) public returns (bool success)
+approve
+function approve(address _spender, uint256 _value) public returns (bool success)
+transferFrom
+function transferFrom(address _from, address _to, uint256 _value) public returns (bool success)
+getTokenHolderData
+function getTokenHolderData(address _address) public view returns (uint256, address, address, uint256, bool)
+getTokenHolder
+function getTokenHolder() public view returns (address[])
+Events:
+Transfer
+event Transfer(address _from, address _to, uint256 _value)
+Approval
+event Approval(address _owner, address _spender, uint256 _value)
+TokenStaking
+Contract
+TokenStaking : 
+
+Modifiers:
+whenTreasuryHasBalance
+modifier whenTreasuryHasBalance(uint256 amount)
+Functions:
+initialize
+function initialize(address owner_, address tokenAddress_, uint256 apyRate_, uint256 minimumStakingAmount_, uint256 maxStakeTokenLimit_, uint256 stakeStartDate_, uint256 stakeEndDate_, uint256 stakeDays_, uint256 earlyUnstakeFeePercentage_) public virtual
+__TokenStaking_init_unchained
+function __TokenStaking_init_unchained(address owner_, address tokenAddress_, uint256 apyRate_, uint256 minimumStakingAmount_, uint256 maxStakeTokenLimit_, uint256 stakeStartDate_, uint256 stakeEndDate_, uint256 stakeDays_, uint256 earlyUnstakeFeePercentage_) internal
+getMinimumStakingAmount
+function getMinimumStakingAmount() external view returns (uint256)
+This function is used to get the minimum staking amount
+
+getMaxStakingTokenLimit
+function getMaxStakingTokenLimit() external view returns (uint256)
+This function is used to get the maxmum staking token limit for program
+
+getStartDate
+function getStartDate() external view returns (uint256)
+This function is used to get the staking start for program
+
+getStakeEndDate
+function getStakeEndDate() external view returns (uint256)
+This function is used to get the staking end date for program
+
+getTotalStakedTokens
+function getTotalStakedTokens() external view returns (uint256)
+This function is used to get the total number of token that are staked
+
+getTotalUsers
+function getTotalUsers() external view returns (uint256)
+This function is used to get the total number of users
+
+getStakeDays
+function getStakeDays() external view returns (uint256)
+This function is used to get the stake days
+
+getEarlyUnstakeFeePercentage
+function getEarlyUnstakeFeePercentage() external view returns (uint256)
+This function is used to get early unstake fee percentage
+
+getStakingStatus
+function getStakingStatus() external view returns (bool)
+This function is used to get staking status
+
+getAPY
+function getAPY() external view returns (uint256)
+This function is used to get the current apy rate
+
+getUserEstimatedRewards
+function getUserEstimatedRewards() external view returns (uint256)
+This function is used to get msg.sender's estimated reward amount
+
+getwithdrawableAmount
+function getwithdrawableAmount() external view returns (uint256)
+This function is used to get withdrawable amount from contract
+
+getUser
+function getUser(address userAddress) external view returns (struct TokenStaking.User)
+This function is used to get user's details
+
+Parameters
+Name	Type	Description
+userAddress	address	User's address to get details of
+Return Values
+Name	Type	Description
+[0]	struct TokenStaking.User	User Struct
+isStakeholder
+function isStakeholder(address _user) external view returns (bool)
+This function is used to check if the user is a stakeholder
+
+Parameters
+Name	Type	Description
+_user	address	Address of the user to check
+Return Values
+Name	Type	Description
+[0]	bool	True if user is a stakeholder, false otherwise
+updateMinimumStakingAmount
+function updateMinimumStakingAmount(uint256 newAmount) external
+This function is used to update minimum staking amount
+
+updateMaximumStakingAmount
+function updateMaximumStakingAmount(uint256 newAmount) external
+This function is used to update maximum staking amount
+
+updateStakingDate
+function updateStakingDate(uint256 newDateAmount) external
+This function is used to update staking end date
+
+updateEarlyStakeFeePercentage
+function updateEarlyStakeFeePercentage(uint256 newPercentage) external
+This function is used to update early stake fee percentage
+
+stakeForUser
+function stakeForUser(uint256 amount, address user) external
+This function is used to stake tokens for specific user
+
+This function can be used to stake for specific user
+
+Parameters
+Name	Type	Description
+amount	uint256	the amount to stake
+user	address	user's address
+togglesStakingStatus
+function togglesStakingStatus() external
+enable/disable staking
+
+This function can be used to toggle staking status
+
+withdraw
+function withdraw(uint256 amount) external
+This function is used to withdraw the specified amount if possible
+
+This function can be used to withdraw the available tokens
+
+Parameters
+Name	Type	Description
+amount	uint256	the amount to withdraw
+stake
+function stake(uint256 _amount) external
+This function is used to stake tokens
+
+Parameters
+Name	Type	Description
+_amount	uint256	The amount that will be staked
+unStake
+function unStake(uint256 _amount) external
+This function is used to unstake tokens
+
+Parameters
+Name	Type	Description
+_amount	uint256	The amount that will be unstaked
+claimReward
+function claimReward() external
+This function is used to claim user's rewards
+
+getCurrentTime
+function getCurrentTime() internal view virtual returns (uint256)
+inherits Initializable:
+
+_disableInitializers
+function _disableInitializers() internal virtual
+inherits ReentrancyGuard: inherits Ownable:
+
+owner
+function owner() public view virtual returns (address)
+_checkOwner
+function _checkOwner() internal view virtual
+renounceOwnership
+function renounceOwnership() public virtual
+transferOwnership
+function transferOwnership(address newOwner) public virtual
+_transferOwnership
+function _transferOwnership(address newOwner) internal virtual
+Events:
+Stake
+event Stake(address user, uint256 amount)
+StakingDetail
+event StakingDetail(address user, uint256 amount, string message)
+Unstake
+event Unstake(address user, uint256 amount)
+EarlyUnstakeFee
+event EarlyUnstakeFee(address user, uint256 amount)
+ClaimReward
+event ClaimReward(address user, uint256 amount)
+inherits Initializable:
+
+Initialized
+event Initialized(uint8 version)
+inherits ReentrancyGuard: inherits Ownable:
+
+OwnershipTransferred
+event OwnershipTransferred(address previousOwner, address newOwner)
