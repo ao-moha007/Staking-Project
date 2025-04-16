@@ -99,15 +99,10 @@ From the frontend UI, run the **initialize** function and input:
 
 ### 9. Start Staking!
 
-You’re now ready to stake your tokens and start earning rewards 🚀
+You’re now ready to stake your tokens and start earning rewards 
 
 ---
 
-##  Screenshots (optional)
-
-> You can include UI images or a GIF showing staking interaction if available.
-
----
 
 ##  License
 
